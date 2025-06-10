@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2rnxi0f7fa63"]
+
+[ext_resource type="Script" uid="uid://biv8b7mbyif8s" path="res://strato_defense/gun/main_gun.gd" id="1_bn36c"]
+
+[node name="MainGun" type="Node2D"]
+script = ExtResource("1_bn36c")
+
+[node name="Torso" type="Line2D" parent="."]
+position = Vector2(16, -32)
+points = PackedVector2Array(-48, 48, -48, 32, -40, 48, 8, 48, 16, 32, 16, 48)
+closed = true
+width = 7.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Tower" type="Node2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(0, 1, 1, 1)
+position = Vector2(0, -16)
+
+[node name="TowerMain" type="Line2D" parent="Tower"]
+position = Vector2(16, 8)
+points = PackedVector2Array(-24, 8, -32, -8, -16, -24, 0, -8, -8, 8)
+closed = true
+width = 7.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="TowerBarrrel" type="Line2D" parent="Tower"]
+position = Vector2(-48, 16)
+points = PackedVector2Array(48, -32, 48, -48)
+width = 7.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Muzzle" type="Node2D" parent="Tower"]
+position = Vector2(0, -48)
+
+[node name="Line2D" type="Line2D" parent="Tower"]
+points = PackedVector2Array(0, 0, 0, -1328)
+width = 1.0

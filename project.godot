@@ -15,6 +15,10 @@ run/main_scene="uid://liwhlwcpm0xc"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Utils="*res://singeltons/utils.tscn"
+
 [display]
 
 window/size/viewport_width=960

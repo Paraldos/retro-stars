@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqh3pydl6x7xg"]
+
+[ext_resource type="PackedScene" uid="uid://d2rnxi0f7fa63" path="res://strato_defense/gun/main_gun.tscn" id="1_5khlk"]
+[ext_resource type="Script" uid="uid://bwanfcewuyagy" path="res://strato_defense/strato_defense.gd" id="1_mwui4"]
+
+[node name="StratoDefense" type="CanvasLayer"]
+script = ExtResource("1_mwui4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0392157, 0.0392157, 0.0784314, 1)
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(0, 48)
+points = PackedVector2Array(0, 336, 64, 336, 64, 448, 448, 448, 448, 312, 512, 312, 512, 448, 896, 448, 896, 336, 960, 336)
+width = 7.0
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="MainGunLeft" parent="." instance=ExtResource("1_5khlk")]
+unique_name_in_owner = true
+position = Vector2(32, 368)
+gun_position = "LEFT_TOWER"
+
+[node name="MainGunMiddle" parent="." instance=ExtResource("1_5khlk")]
+unique_name_in_owner = true
+position = Vector2(480, 344)
+gun_position = "MIDDLE_TOWER"
+
+[node name="MainGunRight" parent="." instance=ExtResource("1_5khlk")]
+unique_name_in_owner = true
+position = Vector2(928, 368)
+gun_position = "RIGHT_TOWER"
