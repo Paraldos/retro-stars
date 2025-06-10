@@ -5,6 +5,11 @@
 [node name="MainGun" type="Node2D"]
 script = ExtResource("1_bn36c")
 
+[node name="AttackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.3
+one_shot = true
+
 [node name="Torso" type="Line2D" parent="."]
 position = Vector2(16, -32)
 points = PackedVector2Array(-48, 48, -48, 32, -40, 48, 8, 48, 16, 32, 16, 48)
