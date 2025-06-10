@@ -16,6 +16,7 @@ func _ready() -> void:
 	var adjusted_rotation = deg_to_rad(tower.rotation_degrees - 90)
 	recoil_direction = Vector2(cos(adjusted_rotation), sin(adjusted_rotation)).normalized()
 
+
 func _attack():
 	_spawn_bullet()
 	_recoil()
@@ -27,8 +28,8 @@ func _spawn_bullet():
 	get_tree().current_scene.add_child(bullet)
 
 func _recoil():
-	var initial_position = tower.position
-	var recoil_position = initial_position - recoil_direction * recoil_amount
-	tower.position = recoil_position
+	var initial_pos = tower.position
+	var recoil_position = initial_pos - recoil_direction * recoil_amount
 	var tween = create_tween()
-	tween.tween_property(tower, "position", initial_position, 0.3)  # Return to original position
+	tween.tween_property(tower, "position", recoil_position, 0.05)
+	tween.tween_property(tower, "position", initial_pos, 0.3)
