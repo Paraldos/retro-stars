@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjcsllaf4em5v"]
+
+[ext_resource type="Script" uid="uid://h8kg63010807" path="res://strato_defense/plaer_bullet/player_bullet.gd" id="1_3nglb"]
+
+[sub_resource type="Gradient" id="Gradient_3nglb"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="PlayerBullet" type="CharacterBody2D"]
+modulate = Color(0, 1, 1, 1)
+script = ExtResource("1_3nglb")
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(-24, 8)
+points = PackedVector2Array(24, -16, 24, 0)
+width = 5.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+lifetime = 0.3
+emission_shape = 1
+emission_sphere_radius = 2.0
+gravity = Vector2(0, 0)
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 2.0
+scale_amount_max = 7.0
+color_ramp = SubResource("Gradient_3nglb")
