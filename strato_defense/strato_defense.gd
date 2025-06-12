@@ -4,9 +4,8 @@ extends CanvasLayer
 @onready var main_gun_middle: Node2D = %MainGunMiddle
 @onready var main_gun_right: Node2D = %MainGunRight
 @onready var attack_timer: Timer = %AttackTimer
-@onready var spawnpoint_left: Marker2D = %SpawnpointLeft
-@onready var spawnpoint_right: Marker2D = %SpawnpointRight
 @onready var enemies_container: Node2D = %EnemiesContainer
+@onready var spawn_timer: Timer = %SpawnTimer
 var templates_for_enemies = [
 	preload("res://strato_defense/enemies/enemy_template.tscn")
 ]
@@ -28,6 +27,5 @@ func _attack():
 func _on_spawn_timer_timeout() -> void:
 	var enemy_template = templates_for_enemies[randi() % templates_for_enemies.size()]
 	var enemy = enemy_template.instantiate()
-	enemy.spawn_pos_left = spawnpoint_left.global_position
-	enemy.spawn_pos_right = spawnpoint_right.global_position
+	enemy.time_to_cross_row = spawn_timer.wait_time -0.5
 	enemies_container.add_child(enemy)
