@@ -64,15 +64,15 @@ gun_position = "RIGHT_TOWER"
 unique_name_in_owner = true
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 4.0
 autostart = true
 
 [node name="SpawnpointLeft" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-128, 64)
+position = Vector2(-126, 80)
 
 [node name="SpawnpointRight" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1088, 64)
+position = Vector2(1090, 80)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

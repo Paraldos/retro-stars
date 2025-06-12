@@ -4,6 +4,7 @@ var speed = 300
 var spawn_pos_left = 0
 var spawn_pos_right = 0
 var rng = RandomNumberGenerator.new()
+var line = 1
 
 func _ready() -> void:
 	rng.randomize()
@@ -19,8 +20,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if global_position.y > 220: queue_free()
-	global_position.y += 85
+	if line == 3: queue_free()
+	line += 1
+	global_position.y = line * spawn_pos_left.y
 	if global_position.x > 0:
 		global_position.x = spawn_pos_left.x
 	else:
