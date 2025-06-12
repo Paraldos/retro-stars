@@ -17,8 +17,13 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0392157, 0.0392157, 0.0784314, 1)
 
-[node name="Level" type="Line2D" parent="."]
+[node name="Level" type="StaticBody2D" parent="."]
 position = Vector2(0, 48)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level"]
+polygon = PackedVector2Array(0, 336, 64, 336, 64, 448, 448, 448, 448, 312, 512, 312, 512, 448, 896, 448, 896, 336, 960, 336, 960, 496, 0, 496)
+
+[node name="Line" type="Line2D" parent="Level"]
 points = PackedVector2Array(0, 336, 64, 336, 64, 448, 448, 448, 448, 312, 512, 312, 512, 448, 896, 448, 896, 336, 960, 336)
 width = 5.0
 joint_mode = 1
