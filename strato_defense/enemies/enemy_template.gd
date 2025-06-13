@@ -7,7 +7,7 @@ var left_border = -128
 var right_border = 1088
 var row_height = 85
 var rng = RandomNumberGenerator.new()
-var line = 0
+var row = 0
 var time_to_cross_row = 0
 
 func _ready() -> void:
@@ -24,15 +24,15 @@ func _initial_position():
 		global_position.x = right_border
 
 func _move():
-	if line >= 3: queue_free()
-	line += 1
-	attack.visible = line == 3 
+	if row >= 3: queue_free()
+	row += 1
+	attack.visible = row == 3 
 	_adjust_position()
 	await _tween_position_x(_get_target_pos())
 	_move()
 
 func _adjust_position():
-	global_position.y = line * row_height
+	global_position.y = row * row_height
 	if global_position.x == left_border:
 		global_position.x = right_border
 	else:
@@ -56,7 +56,7 @@ func _physics_process(delta: float) -> void:
 	_adjust_attack_hight()
 
 func _adjust_attack_hight():
-	if line != 3: return
+	if row != 3: return
 	if attack.is_colliding():
 		var collision_point = attack.get_collision_point()
 		collision_point = to_local(collision_point)
