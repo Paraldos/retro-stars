@@ -61,8 +61,8 @@ func _adjust_attack_hight():
 	if attack.is_colliding():
 		var collision_point = attack.get_collision_point()
 		collision_point = to_local(collision_point)
-		attack_line.points[1].y = collision_point.y
-		attack_particles.position = attack_line.points[1] + Vector2(0, 14)
+		attack_line.points[1].y = collision_point.y +10
+		attack_particles.position = attack_line.points[1] + Vector2(0, 10)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	queue_free()
