@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var attack: RayCast2D = %Attack
 @onready var attack_line: Line2D = %AttackLine
+@onready var attack_particles: CPUParticles2D = %AttackParticles
 var speed = 300
 var left_border = -128
 var right_border = 1088
@@ -61,6 +62,7 @@ func _adjust_attack_hight():
 		var collision_point = attack.get_collision_point()
 		collision_point = to_local(collision_point)
 		attack_line.points[1].y = collision_point.y
+		attack_particles.position = attack_line.points[1] + Vector2(0, 14)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0k7vfij7vnbx"]
+[gd_scene load_steps=7 format=3 uid="uid://b0k7vfij7vnbx"]
 
 [ext_resource type="Script" uid="uid://bawodat1d631q" path="res://strato_defense/enemies/enemy_template.gd" id="1_gqb1k"]
 
@@ -40,6 +40,9 @@ _data = {
 &"loop": SubResource("Animation_gqb1k")
 }
 
+[sub_resource type="Gradient" id="Gradient_gqb1k"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vlw50"]
 size = Vector2(46, 20)
 
@@ -65,6 +68,25 @@ points = PackedVector2Array(0, 17.4062, 0, 317.91)
 width = 15.0
 joint_mode = 2
 end_cap_mode = 2
+
+[node name="AttackParticles" type="CPUParticles2D" parent="Attack"]
+unique_name_in_owner = true
+position = Vector2(0, 348.125)
+scale = Vector2(1, 1.08789)
+amount = 20
+lifetime = 0.4
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(10, 5)
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 8.0
+scale_amount_max = 12.0
+color_ramp = SubResource("Gradient_gqb1k")
 
 [node name="Body" type="Line2D" parent="."]
 position = Vector2(-8, 0)
