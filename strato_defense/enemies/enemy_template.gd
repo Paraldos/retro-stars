@@ -12,6 +12,7 @@ var row_height = 85
 var rng = RandomNumberGenerator.new()
 var row = 0
 var time_to_cross_row = 0
+var disable = false
 
 func _ready() -> void:
 	rng.randomize()
@@ -28,10 +29,10 @@ func _initial_position():
 
 func _move():
 	row += 1
-	if row >= 4:
+	if row >= 4 or disable:
 		queue_free()
 	else:
-		attack.visible = row == 3 
+		attack.visible = row == 3
 		_adjust_position()
 		await _tween_position_x(_get_target_pos())
 		_move()
@@ -74,4 +75,5 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	queue_free()
 
 func _on_attacke_area_area_entered(area: Area2D) -> void:
+	disable = true
 	attack.queue_free()
