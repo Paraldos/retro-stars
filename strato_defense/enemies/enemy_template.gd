@@ -3,6 +3,8 @@ extends Node2D
 @onready var attack: RayCast2D = %Attack
 @onready var attack_line: Line2D = %AttackLine
 @onready var attack_particles: CPUParticles2D = %AttackParticles
+@onready var attack_shape: CollisionShape2D = %AttackShape
+
 var speed = 300
 var left_border = -128
 var right_border = 1088
@@ -25,12 +27,14 @@ func _initial_position():
 		global_position.x = right_border
 
 func _move():
-	if row >= 3: queue_free()
-	row += 1
-	attack.visible = row == 3 
-	_adjust_position()
-	await _tween_position_x(_get_target_pos())
-	_move()
+	if row >= 3:
+		queue_free()
+	else:
+		row += 1
+		attack.visible = row >= 3 
+		_adjust_position()
+		await _tween_position_x(_get_target_pos())
+		_move()
 
 func _adjust_position():
 	global_position.y = row * row_height
@@ -54,7 +58,8 @@ func _tween_position_x(target_pos):
 	return
 
 func _physics_process(delta: float) -> void:
-	_adjust_attack_hight()
+	if attack && attack.visible:
+		_adjust_attack_hight()
 
 func _adjust_attack_hight():
 	if row != 3: return
@@ -62,7 +67,11 @@ func _adjust_attack_hight():
 		var collision_point = attack.get_collision_point()
 		collision_point = to_local(collision_point)
 		attack_line.points[1].y = collision_point.y +10
+		attack_shape.shape.b.y = collision_point.y +10
 		attack_particles.position = attack_line.points[1] + Vector2(0, 10)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	queue_free()
+
+func _on_attacke_area_area_entered(area: Area2D) -> void:
+	attack.queue_free()
