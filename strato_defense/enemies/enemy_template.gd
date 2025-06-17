@@ -27,11 +27,11 @@ func _initial_position():
 		global_position.x = right_border
 
 func _move():
-	if row >= 3:
+	row += 1
+	if row >= 4:
 		queue_free()
 	else:
-		row += 1
-		attack.visible = row >= 3 
+		attack.visible = row == 3 
 		_adjust_position()
 		await _tween_position_x(_get_target_pos())
 		_move()

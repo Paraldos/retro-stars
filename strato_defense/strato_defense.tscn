@@ -12,19 +12,16 @@ script = ExtResource("1_mwui4")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = 8.0
-offset_right = -16.0
-offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0392157, 0.0392157, 0.0784314, 1)
+metadata/_edit_lock_ = true
 
 [node name="Level" parent="." instance=ExtResource("2_yah1x")]
 position = Vector2(0, 48)
 
 [node name="CollisionPolygon2D" parent="Level" index="0"]
-polygon = PackedVector2Array(0, 336, 64, 336, 64, 400, 144, 400, 144, 448, 448, 448, 448, 312, 512, 312, 512, 448, 896, 448, 896, 336, 960, 336, 960, 496, 0, 496)
+polygon = PackedVector2Array(0, 336, 64, 336, 64, 400, 144, 400, 144, 448, 240, 448, 240, 408, 280, 408, 280, 432, 448, 432, 448, 312, 512, 312, 512, 448, 896, 448, 896, 336, 960, 336, 960, 496, 0, 496)
 
 [node name="AttackTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -57,23 +54,30 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="Building" parent="Buildings" instance=ExtResource("4_7cwcl")]
-position = Vector2(104, 408)
+position = Vector2(104, 416)
 
 [node name="CollisionPolygon" parent="Buildings/Building" index="0"]
-position = Vector2(0, 8)
 polygon = PackedVector2Array(-32, 16, -16, 8, 16, 8, 32, 16, 32, 32, -32, 32)
 
 [node name="TorsoLine" parent="Buildings/Building" index="1"]
 points = PackedVector2Array()
 
 [node name="Building2" parent="Buildings" instance=ExtResource("4_7cwcl")]
-position = Vector2(184, 456)
+position = Vector2(192, 464)
 
 [node name="CollisionPolygon" parent="Buildings/Building2" index="0"]
-position = Vector2(0, 8)
 polygon = PackedVector2Array(-32, 8, -21, 8, -21, 24, -13, 24, -13, 14, -5, 14, -5, 24, 4, 24, 4, 6, 13, 13, 13, 24, 24, 24, 24, 8, 32, 8, 32, 32, -32, 32)
 
 [node name="TorsoLine" parent="Buildings/Building2" index="1"]
+points = PackedVector2Array()
+
+[node name="Building3" parent="Buildings" instance=ExtResource("4_7cwcl")]
+position = Vector2(264, 424)
+
+[node name="CollisionPolygon" parent="Buildings/Building3" index="0"]
+polygon = PackedVector2Array(0, 0, 8, 32, -16, 32, -8, 0)
+
+[node name="TorsoLine" parent="Buildings/Building3" index="1"]
 points = PackedVector2Array()
 
 [node name="SpawnTimer" type="Timer" parent="."]
@@ -86,3 +90,4 @@ autostart = true
 [editable path="Level"]
 [editable path="Buildings/Building"]
 [editable path="Buildings/Building2"]
+[editable path="Buildings/Building3"]
