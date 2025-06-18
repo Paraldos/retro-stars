@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://boksdppb6p870"]
+
+[sub_resource type="Gradient" id="Gradient_lj11g"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Explosion" type="CPUParticles2D"]
+amount = 25
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 5.0
+spread = 180.0
+gravity = Vector2(0, 25)
+initial_velocity_min = 80.0
+initial_velocity_max = 120.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+color_ramp = SubResource("Gradient_lj11g")
