@@ -10,6 +10,7 @@ var templates_for_enemies = [
 	preload("res://strato_defense/enemies/enemy_template.tscn")
 ]
 var buildings = 0
+var enemies_spawned = 0
 
 func _ready() -> void:
 	SignalBus.building_init.connect(_on_building_init)
@@ -36,6 +37,11 @@ func _attack():
 	attack_timer.start()
 
 func _on_spawn_timer_timeout() -> void:
+	if enemies_spawned == 9:
+		enemies_spawned = 0
+		if spawn_timer.wait_time >= 2.0:
+			spawn_timer.wait_time -= 0.2
+	enemies_spawned += 1
 	var enemy_template = templates_for_enemies[randi() % templates_for_enemies.size()]
 	var enemy = enemy_template.instantiate()
 	enemy.world = self
