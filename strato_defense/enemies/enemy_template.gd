@@ -73,11 +73,14 @@ func _adjust_attack_hight():
 		attack_particles.position = attack_line.points[1] + Vector2(0, 10)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	var explosion = explosion_template.instantiate()
-	explosion.global_position = global_position
-	get_tree().current_scene.add_child(explosion)
+	_spawn_explosion()
 	queue_free()
 
 func _on_attacke_area_area_entered(area: Area2D) -> void:
 	disable = true
 	attack.queue_free()
+
+func _spawn_explosion():
+	var explosion = explosion_template.instantiate()
+	explosion.global_position = global_position
+	get_tree().current_scene.add_child(explosion)
