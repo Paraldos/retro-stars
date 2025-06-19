@@ -1,10 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://boksdppb6p870"]
+[gd_scene load_steps=3 format=3 uid="uid://boksdppb6p870"]
+
+[ext_resource type="Script" uid="uid://cipxhn0ck2ev2" path="res://strato_defense/explosion/explosion.gd" id="1_g87wm"]
 
 [sub_resource type="Gradient" id="Gradient_lj11g"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Explosion" type="CPUParticles2D"]
 amount = 25
+lifetime = 0.5
+preprocess = 25.0
 explosiveness = 1.0
 emission_shape = 1
 emission_sphere_radius = 5.0
@@ -17,3 +21,6 @@ angle_max = 720.0
 scale_amount_min = 5.0
 scale_amount_max = 10.0
 color_ramp = SubResource("Gradient_lj11g")
+script = ExtResource("1_g87wm")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

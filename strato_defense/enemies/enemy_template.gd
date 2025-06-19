@@ -5,6 +5,7 @@ extends Node2D
 @onready var attack_particles: CPUParticles2D = %AttackParticles
 @onready var attack_shape: CollisionShape2D = %AttackShape
 
+var explosion_template = preload('res://strato_defense/explosion/explosion.tscn')
 var speed = 300
 var left_border = -128
 var right_border = 1088
@@ -72,6 +73,9 @@ func _adjust_attack_hight():
 		attack_particles.position = attack_line.points[1] + Vector2(0, 10)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
+	var explosion = explosion_template.instantiate()
+	explosion.global_position = global_position
+	get_tree().current_scene.add_child(explosion)
 	queue_free()
 
 func _on_attacke_area_area_entered(area: Area2D) -> void:
