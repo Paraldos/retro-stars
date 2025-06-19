@@ -4,6 +4,7 @@ extends Node2D
 @onready var attack_line: Line2D = %AttackLine
 @onready var attack_particles: CPUParticles2D = %AttackParticles
 @onready var attack_shape: CollisionShape2D = %AttackShape
+@onready var attack_sound_effect: SoundEffect = %AttackSoundEffect
 
 var explosion_template = preload('res://strato_defense/explosion/explosion.tscn')
 var speed = 300
@@ -25,6 +26,10 @@ func _ready() -> void:
 func _toggle_attack(new_status):
 	attack.visible = new_status
 	attack_shape.disabled = !new_status
+	if new_status:
+		attack_sound_effect._play()
+	else:
+		attack_sound_effect._stop()
 
 func _initial_position():
 	if rng.randi_range(0,1) == 0:
