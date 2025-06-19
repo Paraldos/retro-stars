@@ -21,7 +21,7 @@ metadata/_edit_lock_ = true
 position = Vector2(0, 48)
 
 [node name="CollisionPolygon2D" parent="Level" index="0"]
-polygon = PackedVector2Array(0, 336, 64, 336, 64, 400, 144, 400, 144, 448, 232, 448, 232, 408, 256, 408, 256, 432, 344, 432, 344, 408, 416, 408, 416, 376, 448, 376, 448, 312, 512, 312, 512, 448, 896, 448, 896, 336, 960, 336, 960, 496, 0, 496)
+polygon = PackedVector2Array(0, 336, 64, 336, 64, 400, 144, 400, 144, 448, 232, 448, 232, 408, 256, 408, 256, 432, 344, 432, 344, 408, 416, 408, 416, 376, 448, 376, 448, 312, 512, 312, 512, 400, 544, 400, 544, 448, 624, 448, 624, 424, 704, 424, 704, 408, 768, 408, 768, 448, 864, 448, 864, 424, 896, 424, 896, 336, 960, 336, 960, 496, 0, 496)
 
 [node name="AttackTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -57,7 +57,7 @@ metadata/_edit_lock_ = true
 position = Vector2(104, 432)
 
 [node name="CollisionPolygon" parent="Buildings/Building" index="0"]
-polygon = PackedVector2Array(-32, 8, -24, 0, -8, -8, 8, -8, 24, 0, 32, 8, 32, 16, -32, 16)
+polygon = PackedVector2Array(-28, 8, -16, 0, -4, -4, 4, -4, 16, 0, 28, 8, 28, 16, -28, 16)
 
 [node name="TorsoLine" parent="Buildings/Building" index="1"]
 points = PackedVector2Array()
@@ -66,7 +66,7 @@ points = PackedVector2Array()
 position = Vector2(188, 480)
 
 [node name="CollisionPolygon" parent="Buildings/Building2" index="0"]
-polygon = PackedVector2Array(-32, -16, -16, -24, -16, 8, -8, 8, -8, -8, 0, -16, 8, -16, 8, 0, 16, 0, 16, -8, 32, -8, 32, 16, -32, 16)
+polygon = PackedVector2Array(-32, -16, -16, -24, -16, 8, -8, 8, -8, -8, 0, -16, 8, -16, 8, 0, 20, 0, 20, -8, 32, -8, 32, 16, -32, 16)
 
 [node name="TorsoLine" parent="Buildings/Building2" index="1"]
 points = PackedVector2Array()
@@ -75,7 +75,7 @@ points = PackedVector2Array()
 position = Vector2(244, 440)
 
 [node name="CollisionPolygon" parent="Buildings/Building3" index="0"]
-polygon = PackedVector2Array(4, -16, 12, 16, -12, 16, -4, -16)
+polygon = PackedVector2Array(4, -16, 8, 16, -8, 16, -4, -16)
 
 [node name="TorsoLine" parent="Buildings/Building3" index="1"]
 points = PackedVector2Array()
@@ -84,7 +84,7 @@ points = PackedVector2Array()
 position = Vector2(300, 464)
 
 [node name="CollisionPolygon" parent="Buildings/Building4" index="0"]
-polygon = PackedVector2Array(-36, 16, 36, 16, 36, 8, 28, 0, 12, -8, -12, -8, -28, 0, -36, 8)
+polygon = PackedVector2Array(-32, 16, 32, 16, 32, 12, 20, 4, -20, 4, -32, 12)
 
 [node name="TorsoLine" parent="Buildings/Building4" index="1"]
 points = PackedVector2Array()
@@ -93,7 +93,7 @@ points = PackedVector2Array()
 position = Vector2(376, 440)
 
 [node name="CollisionPolygon" parent="Buildings/Building5" index="0"]
-polygon = PackedVector2Array(-24, 16, -24, -16, -16, -16, -16, 8, -8, 8, -8, -8, 0, -16, 8, -16, 8, 8, 16, 8, 16, -24, 32, -16, 32, 16)
+polygon = PackedVector2Array(-20, 16, -20, -16, -12, -16, -12, 8, -4, 8, -4, -12, 8, -16, 8, 8, 16, 8, 16, -24, 28, -20, 28, 16)
 
 [node name="TorsoLine" parent="Buildings/Building5" index="1"]
 points = PackedVector2Array()
@@ -102,9 +102,63 @@ points = PackedVector2Array()
 position = Vector2(428, 408)
 
 [node name="CollisionPolygon" parent="Buildings/Building6" index="0"]
-polygon = PackedVector2Array(-12, 16, -4, -16, 4, -16, 12, 16)
+polygon = PackedVector2Array(-8, 16, -4, -16, 4, -16, 8, 16)
 
 [node name="TorsoLine" parent="Buildings/Building6" index="1"]
+points = PackedVector2Array()
+
+[node name="Building7" parent="Buildings" instance=ExtResource("4_7cwcl")]
+position = Vector2(532, 432)
+
+[node name="CollisionPolygon" parent="Buildings/Building7" index="0"]
+polygon = PackedVector2Array(-8, 16, -4, -16, 4, -16, 8, 16)
+
+[node name="TorsoLine" parent="Buildings/Building7" index="1"]
+points = PackedVector2Array()
+
+[node name="Building8" parent="Buildings" instance=ExtResource("4_7cwcl")]
+position = Vector2(584, 480)
+
+[node name="CollisionPolygon" parent="Buildings/Building8" index="0"]
+polygon = PackedVector2Array(-28, 16, -28, 8, -16, 0, 16, 0, 28, 8, 28, 16)
+
+[node name="TorsoLine" parent="Buildings/Building8" index="1"]
+points = PackedVector2Array()
+
+[node name="Building9" parent="Buildings" instance=ExtResource("4_7cwcl")]
+position = Vector2(664, 456)
+
+[node name="CollisionPolygon" parent="Buildings/Building9" index="0"]
+polygon = PackedVector2Array(-28, 16, -28, -24, -12, -16, -12, 8, -4, 8, -4, -8, 4, -16, 4, 8, 12, 8, 12, -16, 28, -16, 28, 16)
+
+[node name="TorsoLine" parent="Buildings/Building9" index="1"]
+points = PackedVector2Array(-132, -24)
+
+[node name="Building10" parent="Buildings" instance=ExtResource("4_7cwcl")]
+position = Vector2(736, 440)
+
+[node name="CollisionPolygon" parent="Buildings/Building10" index="0"]
+polygon = PackedVector2Array(-20, 16, -20, -24, -12, -16, -12, 8, -4, 8, 0, -8, 12, -8, 12, -24, 20, -24, 20, 16)
+
+[node name="TorsoLine" parent="Buildings/Building10" index="1"]
+points = PackedVector2Array()
+
+[node name="Building11" parent="Buildings" instance=ExtResource("4_7cwcl")]
+position = Vector2(816, 480)
+
+[node name="CollisionPolygon" parent="Buildings/Building11" index="0"]
+polygon = PackedVector2Array(-36, 16, -36, 8, -24, 0, -12, -4, 12, -4, 24, 0, 36, 8, 36, 16)
+
+[node name="TorsoLine" parent="Buildings/Building11" index="1"]
+points = PackedVector2Array()
+
+[node name="Building12" parent="Buildings" instance=ExtResource("4_7cwcl")]
+position = Vector2(876, 456)
+
+[node name="CollisionPolygon" parent="Buildings/Building12" index="0"]
+polygon = PackedVector2Array(-8, 16, -4, -16, 4, -16, 8, 16)
+
+[node name="TorsoLine" parent="Buildings/Building12" index="1"]
 points = PackedVector2Array()
 
 [node name="SpawnTimer" type="Timer" parent="."]
@@ -121,3 +175,9 @@ autostart = true
 [editable path="Buildings/Building4"]
 [editable path="Buildings/Building5"]
 [editable path="Buildings/Building6"]
+[editable path="Buildings/Building7"]
+[editable path="Buildings/Building8"]
+[editable path="Buildings/Building9"]
+[editable path="Buildings/Building10"]
+[editable path="Buildings/Building11"]
+[editable path="Buildings/Building12"]
