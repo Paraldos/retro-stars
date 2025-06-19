@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2rnxi0f7fa63"]
+[gd_scene load_steps=4 format=3 uid="uid://d2rnxi0f7fa63"]
 
 [ext_resource type="Script" uid="uid://biv8b7mbyif8s" path="res://strato_defense/gun/main_gun.gd" id="1_bn36c"]
 [ext_resource type="AudioStream" uid="uid://bvsietekrnxku" path="res://assets/gun4.wav" id="2_3v7rf"]
+[ext_resource type="Script" uid="uid://ta42ornj8lfx" path="res://classes/sound_effect.gd" id="2_rda66"]
 
 [node name="MainGun" type="Node2D"]
 script = ExtResource("1_bn36c")
@@ -45,6 +46,11 @@ width = 1.0
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-40, 0, 0, 16, 40, 0, 32, 16, -32, 16)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="SoundEffectGund" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_rda66")
+metadata/_custom_type_script = "uid://ta42ornj8lfx"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="SoundEffectGund"]
 unique_name_in_owner = true
 stream = ExtResource("2_3v7rf")

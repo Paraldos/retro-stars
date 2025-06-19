@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var tower: Node2D = %Tower
 @onready var bullet_spawn_point: Node2D = %BulletSpawnPoint
-@onready var audio_stream_player: AudioStreamPlayer2D = %AudioStreamPlayer
+@onready var sound_effect_gund: SoundEffect = %SoundEffectGund
 @export_enum("LEFT_TOWER", "MIDDLE_TOWER", "RIGHT_TOWER") var gun_position : String
 @export var dip = 70
 var player_bullet = preload("res://strato_defense/plaer_bullet/player_bullet.tscn")
@@ -29,17 +29,13 @@ func _attack():
 	_turn()
 	_spawn_bullet()
 	_recoil()
-	_sound()
+	sound_effect_gund._play()
 
 func _spawn_bullet():
 	var bullet = player_bullet.instantiate()
 	bullet.global_position = bullet_spawn_point.global_position
 	bullet.rotation_degrees = tower.rotation_degrees
 	get_tree().current_scene.add_child(bullet)
-
-func _sound():
-	audio_stream_player.pitch_scale = rng.randf_range(0.8, 1.2)
-	audio_stream_player.play()
 
 func _turn():
 	var offset = 2

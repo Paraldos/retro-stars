@@ -35,6 +35,7 @@ metadata/_custom_type_script = "uid://ta42ornj8lfx"
 [node name="Sound1" type="AudioStreamPlayer2D" parent="SoundEffect"]
 unique_name_in_owner = true
 stream = ExtResource("2_1517y")
+pitch_scale = 0.8
 
 [node name="Sound2" type="AudioStreamPlayer2D" parent="SoundEffect"]
 unique_name_in_owner = true

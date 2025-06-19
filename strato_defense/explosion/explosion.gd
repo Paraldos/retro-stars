@@ -11,4 +11,5 @@ func _start_particles():
 	one_shot = true
 
 func _on_finished() -> void:
+	await get_tree().create_timer(2).timeout
 	queue_free()
