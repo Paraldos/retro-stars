@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://boksdppb6p870"]
+[gd_scene load_steps=7 format=3 uid="uid://boksdppb6p870"]
 
 [ext_resource type="Script" uid="uid://cipxhn0ck2ev2" path="res://strato_defense/explosion/explosion.gd" id="1_g87wm"]
 [ext_resource type="AudioStream" uid="uid://c2tabf360fpkf" path="res://assets/explosion2.wav" id="2_1517y"]
+[ext_resource type="Script" uid="uid://ta42ornj8lfx" path="res://classes/sound_effect.gd" id="2_vivac"]
 [ext_resource type="AudioStream" uid="uid://dcbnjlvf7dme5" path="res://assets/explosion1.wav" id="3_075q2"]
 [ext_resource type="AudioStream" uid="uid://ckyc7blxpn4nl" path="res://assets/explosion3.wav" id="4_075q2"]
 
@@ -10,7 +11,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Explosion" type="CPUParticles2D"]
 amount = 25
-lifetime = 0.5
+lifetime = 0.4
 preprocess = 25.0
 explosiveness = 1.0
 emission_shape = 1
@@ -26,15 +27,20 @@ scale_amount_max = 10.0
 color_ramp = SubResource("Gradient_lj11g")
 script = ExtResource("1_g87wm")
 
-[node name="Sound1" type="AudioStreamPlayer2D" parent="."]
+[node name="SoundEffect" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_vivac")
+metadata/_custom_type_script = "uid://ta42ornj8lfx"
+
+[node name="Sound1" type="AudioStreamPlayer2D" parent="SoundEffect"]
 unique_name_in_owner = true
 stream = ExtResource("2_1517y")
 
-[node name="Sound2" type="AudioStreamPlayer2D" parent="."]
+[node name="Sound2" type="AudioStreamPlayer2D" parent="SoundEffect"]
 unique_name_in_owner = true
 stream = ExtResource("3_075q2")
 
-[node name="Sound3" type="AudioStreamPlayer2D" parent="."]
+[node name="Sound3" type="AudioStreamPlayer2D" parent="SoundEffect"]
 unique_name_in_owner = true
 stream = ExtResource("4_075q2")
 
