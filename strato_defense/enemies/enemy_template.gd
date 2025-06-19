@@ -5,6 +5,8 @@ extends Node2D
 @onready var attack_particles: CPUParticles2D = %AttackParticles
 @onready var attack_shape: CollisionShape2D = %AttackShape
 @onready var attack_sound_effect: SoundEffect = %AttackSoundEffect
+@onready var body: Line2D = %Body
+@onready var hitbox_polygon: CollisionPolygon2D = %HitboxPolygon
 
 var explosion_template = preload('res://strato_defense/explosion/explosion.tscn')
 var speed = 300
@@ -18,6 +20,7 @@ var world
 var buildings_passed = 0
 
 func _ready() -> void:
+	hitbox_polygon.polygon = body.points
 	rng.randomize()
 	_initial_position()
 	_move()
@@ -83,6 +86,7 @@ func _adjust_attack_hight():
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	_spawn_explosion()
+	area.get_parent().queue_free()
 	queue_free()
 
 func _spawn_explosion():

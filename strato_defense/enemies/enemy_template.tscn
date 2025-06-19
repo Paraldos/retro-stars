@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0k7vfij7vnbx"]
+[gd_scene load_steps=9 format=3 uid="uid://b0k7vfij7vnbx"]
 
 [ext_resource type="Script" uid="uid://bawodat1d631q" path="res://strato_defense/enemies/enemy_template.gd" id="1_gqb1k"]
 [ext_resource type="Script" uid="uid://ta42ornj8lfx" path="res://classes/sound_effect.gd" id="2_q31c5"]
@@ -72,9 +72,6 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_gqb1k"]
 b = Vector2(0, 850)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlw50"]
-size = Vector2(46, 20)
-
 [node name="EnemyTemplate" type="Node2D"]
 modulate = Color(1, 0.027451, 0.227451, 1)
 script = ExtResource("1_gqb1k")
@@ -135,6 +132,7 @@ metadata/_custom_type_script = "uid://ta42ornj8lfx"
 stream = ExtResource("3_q31c5")
 
 [node name="Body" type="Line2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(-8, 0)
 points = PackedVector2Array(32, 0, 0, -8, -8, 0, 0, 8)
 closed = true
@@ -148,9 +146,8 @@ collision_layer = 0
 collision_mask = 8
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(4, 0)
-shape = SubResource("RectangleShape2D_vlw50")
+[node name="HitboxPolygon" type="CollisionPolygon2D" parent="Hitbox"]
+unique_name_in_owner = true
 
 [connection signal="area_entered" from="Attack/AttackeArea" to="." method="_on_attacke_area_area_entered"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
