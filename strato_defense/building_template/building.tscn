@@ -22,5 +22,3 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 metadata/_edit_lock_ = true
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -68,7 +68,7 @@ _data = {
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_gqb1k"]
-b = Vector2(0, 19.582)
+b = Vector2(0, 850)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vlw50"]
 size = Vector2(46, 20)

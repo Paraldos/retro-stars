@@ -13,13 +13,18 @@ var row_height = 85
 var rng = RandomNumberGenerator.new()
 var row = 0
 var time_to_cross_row = 0
-var disable = false
+var world
+var buildings_passed = 0
 
 func _ready() -> void:
 	rng.randomize()
-	attack.visible = false
 	_initial_position()
 	_move()
+	_toggle_attack(false)
+
+func _toggle_attack(new_status):
+	attack.visible = new_status
+	attack_shape.disabled = !new_status
 
 func _initial_position():
 	if rng.randi_range(0,1) == 0:
@@ -30,15 +35,15 @@ func _initial_position():
 
 func _move():
 	row += 1
-	if row >= 4 or disable:
+	if row == 3:
+		_toggle_attack(true)
+	elif row >= 4:
 		queue_free()
-	else:
-		attack.visible = row == 3
-		_adjust_position()
-		await _tween_position_x(_get_target_pos())
-		_move()
+	_adjust_row()
+	await _tween_position_x(_get_target_pos())
+	_move()
 
-func _adjust_position():
+func _adjust_row():
 	global_position.y = row * row_height
 	if global_position.x == left_border:
 		global_position.x = right_border
@@ -69,18 +74,22 @@ func _adjust_attack_hight():
 		var collision_point = attack.get_collision_point()
 		collision_point = to_local(collision_point)
 		attack_line.points[1].y = collision_point.y +10
-		attack_shape.shape.b.y = collision_point.y +10
 		attack_particles.position = attack_line.points[1] + Vector2(0, 10)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	_spawn_explosion()
 	queue_free()
 
-func _on_attacke_area_area_entered(area: Area2D) -> void:
-	disable = true
-	attack.queue_free()
-
 func _spawn_explosion():
 	var explosion = explosion_template.instantiate()
 	explosion.global_position = global_position
 	get_tree().current_scene.add_child(explosion)
+
+func _on_attacke_area_area_entered(area: Area2D) -> void:
+	if !attack.visible: return
+	if !area.has_method('_destroy'): return
+	#
+	buildings_passed += 1
+	if buildings_passed == world.buildings:
+		call_deferred("_toggle_attack", false)
+		area._destroy()

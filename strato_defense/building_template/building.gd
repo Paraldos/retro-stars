@@ -7,12 +7,14 @@ var explosion_template = preload('res://strato_defense/explosion/explosion.tscn'
 func _ready() -> void:
 	torso_line.position.y -= 7
 	torso_line.points = collision_polygon.polygon
+	await get_tree().create_timer(0.1).timeout
+	SignalBus.building_init.emit()
 
-func _on_area_entered(area: Area2D) -> void:
-	_spawn_explosion()
-	queue_free()
-
-func _spawn_explosion():
+func _destroy():
+	SignalBus.building_destroyed.emit()
+	#
 	var explosion = explosion_template.instantiate()
 	explosion.global_position = global_position
 	get_tree().current_scene.add_child(explosion)
+	#
+	queue_free()
