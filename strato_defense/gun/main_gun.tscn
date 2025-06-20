@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2rnxi0f7fa63"]
+[gd_scene load_steps=5 format=3 uid="uid://d2rnxi0f7fa63"]
 
 [ext_resource type="Script" uid="uid://biv8b7mbyif8s" path="res://strato_defense/gun/main_gun.gd" id="1_bn36c"]
 [ext_resource type="Script" uid="uid://ta42ornj8lfx" path="res://classes/sound_effect.gd" id="2_rda66"]
 [ext_resource type="AudioStream" uid="uid://b7y6j37us27uc" path="res://assets/gun.wav" id="3_k0e10"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rda66"]
+radius = 8.0
 
 [node name="MainGun" type="Node2D"]
 script = ExtResource("1_bn36c")
@@ -54,3 +57,10 @@ metadata/_custom_type_script = "uid://ta42ornj8lfx"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="SoundEffectGund"]
 unique_name_in_owner = true
 stream = ExtResource("3_k0e10")
+
+[node name="HitArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource("CircleShape2D_rda66")
