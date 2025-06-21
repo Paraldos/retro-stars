@@ -16,7 +16,6 @@ var row_height = 85
 var rng = RandomNumberGenerator.new()
 var row = 0
 var time_to_cross_row = 0
-var world
 var buildings_passed = 0
 
 func _ready() -> void:
@@ -99,6 +98,6 @@ func _on_attacke_area_area_entered(area: Area2D) -> void:
 	if !area.has_method('_destroy'): return
 	#
 	buildings_passed += 1
-	if buildings_passed == world.buildings:
+	if buildings_passed == StratoDefenseData.buildings:
 		call_deferred("_toggle_attack", false)
 		area._destroy()
