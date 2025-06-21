@@ -58,9 +58,10 @@ metadata/_custom_type_script = "uid://ta42ornj8lfx"
 unique_name_in_owner = true
 stream = ExtResource("3_k0e10")
 
-[node name="HitArea" type="Area2D" parent="."]
+[node name="HitAreaGun" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+[node name="HitAreaCollisionShape" type="CollisionShape2D" parent="HitAreaGun"]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_rda66")

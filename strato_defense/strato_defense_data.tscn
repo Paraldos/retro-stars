@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://clqc5k4gbstwm"]
-
-[ext_resource type="Script" uid="uid://ck8lhxagy23mg" path="res://strato_defense/strato_defense_data.gd" id="1_plmwy"]
-
-[node name="StratoDefenseData" type="Node"]
-script = ExtResource("1_plmwy")

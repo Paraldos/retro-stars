@@ -8,7 +8,6 @@ extends Node2D
 @onready var body: Line2D = %Body
 @onready var hitbox_polygon: CollisionPolygon2D = %HitboxPolygon
 
-var explosion_template = preload('res://strato_defense/explosion/explosion.tscn')
 var speed = 300
 var left_border = -128
 var right_border = 1088
@@ -84,20 +83,18 @@ func _adjust_attack_hight():
 		attack_particles.position = attack_line.points[1] + Vector2(0, 10)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	_spawn_explosion()
+	StratoDefenseUtils._spawn_explosion(global_position)
 	area.get_parent().queue_free()
 	queue_free()
 
-func _spawn_explosion():
-	var explosion = explosion_template.instantiate()
-	explosion.global_position = global_position
-	get_tree().current_scene.add_child(explosion)
-
 func _on_attacke_area_area_entered(area: Area2D) -> void:
 	if !attack.visible: return
-	if !area.has_method('_destroy'): return
-	#
 	buildings_passed += 1
-	if buildings_passed == StratoDefenseData.buildings:
+	if StratoDefenseUtils.main_gun_intact:
+		if !area.name.contains('HitAreaGun'): return
+		call_deferred("_toggle_attack", false)
+		area.get_parent()._destroy()
+	elif buildings_passed == StratoDefenseUtils.buildings:
+		if !area.name.containsn('Building'): return
 		call_deferred("_toggle_attack", false)
 		area._destroy()

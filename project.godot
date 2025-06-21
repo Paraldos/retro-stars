@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 Utils="*res://singeltons/utils.tscn"
 SignalBus="*res://singeltons/signal_bus.gd"
-StratoDefenseData="*res://strato_defense/strato_defense_data.gd"
+StratoDefenseUtils="*res://strato_defense/strato_defense_utils.tscn"
 
 [display]
 

@@ -3,6 +3,8 @@ extends Node2D
 @onready var tower: Node2D = %Tower
 @onready var bullet_spawn_point: Node2D = %BulletSpawnPoint
 @onready var sound_effect_gund: SoundEffect = %SoundEffectGund
+@onready var hit_area_collision_shape: CollisionShape2D = %HitAreaCollisionShape
+
 @export_enum("LEFT_TOWER", "MIDDLE_TOWER", "RIGHT_TOWER") var gun_position : String
 @export var dip = 70
 var player_bullet = preload("res://strato_defense/plaer_bullet/player_bullet.tscn")
@@ -14,6 +16,7 @@ func _ready() -> void:
 	rng.randomize()
 	_setup_gun_rotation()
 	_setup_recoil_direction()
+	hit_area_collision_shape.disabled = tower.rotation_degrees != 0
 
 func _setup_gun_rotation():
 	if gun_position == "LEFT_TOWER":
@@ -26,6 +29,7 @@ func _setup_recoil_direction():
 	recoil_direction = Vector2(cos(adjusted_rotation), sin(adjusted_rotation)).normalized()
 
 func _attack():
+	if !tower.visible: return
 	_turn()
 	_spawn_bullet()
 	_recoil()
@@ -49,3 +53,9 @@ func _recoil():
 	tower.position = initial_pos - recoil_direction * recoil_amount
 	var tween = create_tween()
 	tween.tween_property(tower, "position", initial_pos, 0.3)
+
+func _destroy():
+	hit_area_collision_shape.call_deferred('set_disabled', true)
+	tower.visible = false
+	StratoDefenseUtils.main_gun_intact = false
+	StratoDefenseUtils._spawn_explosion(tower.global_position)
