@@ -12,4 +12,5 @@ func _ready() -> void:
 func _destroy():
 	StratoDefenseUtils.buildings -= 1
 	StratoDefenseUtils._spawn_explosion(global_position)
-	queue_free()
+	visible = false
+	collision_polygon.call_deferred('set_disabled', true)
