@@ -8,6 +8,8 @@ extends Node2D
 @onready var body: Line2D = %Body
 @onready var hitbox_polygon: CollisionPolygon2D = %HitboxPolygon
 
+@export var point_value = 50
+
 var speed = 300
 var left_border = -128
 var right_border = 1088
@@ -85,6 +87,7 @@ func _adjust_attack_hight():
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	StratoDefenseUtils._spawn_explosion(global_position)
 	area.get_parent().queue_free()
+	StratoDefenseUtils._add_points(point_value)
 	queue_free()
 
 func _on_attacke_area_area_entered(area: Area2D) -> void:
