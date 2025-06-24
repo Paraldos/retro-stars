@@ -8,6 +8,9 @@ script = ExtResource("1_6paqo")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, 336, 64, 336, 64, 448, 448, 448, 448, 312, 512, 312, 512, 448, 896, 448, 896, 336, 960, 336, 960, 496, 0, 496)
 
+[node name="BackgroundPolygon" type="Polygon2D" parent="."]
+color = Color(0.0392157, 0.0392157, 0.0784314, 1)
+
 [node name="Line" type="Line2D" parent="."]
 closed = true
 width = 5.0

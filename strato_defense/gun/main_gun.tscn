@@ -25,7 +25,7 @@ position = Vector2(0, -16)
 
 [node name="TowerMain" type="Line2D" parent="Tower"]
 position = Vector2(16, 8)
-points = PackedVector2Array(-20, 4, -24, -8, -20, -16, -12, -16, -8, -8, -12, 4)
+points = PackedVector2Array(-20, 8, -24, -8, -16, -16, -8, -8, -12, 8)
 closed = true
 width = 3.0
 joint_mode = 2

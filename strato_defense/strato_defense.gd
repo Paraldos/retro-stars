@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var attack_timer: Timer = %AttackTimer
 @onready var enemies_container: Node2D = %EnemiesContainer
 @onready var spawn_timer: Timer = %SpawnTimer
+
 var templates_for_enemies = [
 	preload("res://strato_defense/enemies/enemy_template.tscn")
 ]

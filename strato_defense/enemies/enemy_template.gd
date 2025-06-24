@@ -8,7 +8,7 @@ extends Node2D
 @onready var body: Line2D = %Body
 @onready var hitbox_polygon: CollisionPolygon2D = %HitboxPolygon
 
-@export var point_value = 50
+@export var point_value = 75
 
 var speed = 300
 var left_border = -128

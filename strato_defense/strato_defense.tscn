@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqh3pydl6x7xg"]
+[gd_scene load_steps=7 format=3 uid="uid://dqh3pydl6x7xg"]
 
 [ext_resource type="PackedScene" uid="uid://d2rnxi0f7fa63" path="res://strato_defense/gun/main_gun.tscn" id="1_5khlk"]
 [ext_resource type="Script" uid="uid://bwanfcewuyagy" path="res://strato_defense/strato_defense.gd" id="1_mwui4"]
@@ -6,16 +6,37 @@
 [ext_resource type="PackedScene" uid="uid://8gcq6h5iy6pp" path="res://strato_defense/level/level.tscn" id="2_yah1x"]
 [ext_resource type="PackedScene" uid="uid://df7tv1bfy8slc" path="res://strato_defense/building_template/building.tscn" id="4_7cwcl"]
 
+[sub_resource type="Gradient" id="Gradient_hhvar"]
+offsets = PackedFloat32Array(0, 0.2, 0.753333, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
 [node name="StratoDefense" type="CanvasLayer"]
 script = ExtResource("1_mwui4")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0392157, 0.0392157, 0.0784314, 1)
+metadata/_edit_lock_ = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer"]
+position = Vector2(480, 135)
+amount = 80
+lifetime = 120.0
+preprocess = 60.0
+emission_shape = 3
+emission_rect_extents = Vector2(480, 270)
+gravity = Vector2(0, 0)
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_hhvar")
 metadata/_edit_lock_ = true
 
 [node name="Level" parent="." instance=ExtResource("2_yah1x")]
