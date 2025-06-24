@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://boksdppb6p870"]
 
 [ext_resource type="Script" uid="uid://cipxhn0ck2ev2" path="res://strato_defense/explosion/explosion.gd" id="1_g87wm"]
-[ext_resource type="AudioStream" uid="uid://c2tabf360fpkf" path="res://assets/explosion2.wav" id="2_1517y"]
+[ext_resource type="AudioStream" uid="uid://c2tabf360fpkf" path="res://assets/sound/explosion2.wav" id="2_1517y"]
 [ext_resource type="Script" uid="uid://ta42ornj8lfx" path="res://classes/sound_effect.gd" id="2_vivac"]
-[ext_resource type="AudioStream" uid="uid://dcbnjlvf7dme5" path="res://assets/explosion1.wav" id="3_075q2"]
-[ext_resource type="AudioStream" uid="uid://ckyc7blxpn4nl" path="res://assets/explosion3.wav" id="4_075q2"]
+[ext_resource type="AudioStream" uid="uid://dcbnjlvf7dme5" path="res://assets/sound/explosion1.wav" id="3_075q2"]
+[ext_resource type="AudioStream" uid="uid://ckyc7blxpn4nl" path="res://assets/sound/explosion3.wav" id="4_075q2"]
 
 [sub_resource type="Gradient" id="Gradient_lj11g"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)

@@ -12,6 +12,7 @@ func _reset():
 
 func _add_points(value):
 	points += value
+	SignalBus.update_points.emit()
 
 func _spawn_explosion(position):
 	var explosion = explosion_template.instantiate()

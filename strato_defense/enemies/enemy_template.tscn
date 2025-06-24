@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bawodat1d631q" path="res://strato_defense/enemies/enemy_template.gd" id="1_gqb1k"]
 [ext_resource type="Script" uid="uid://ta42ornj8lfx" path="res://classes/sound_effect.gd" id="2_q31c5"]
-[ext_resource type="AudioStream" uid="uid://qmjcb1s7j4sj" path="res://assets/laser.wav" id="3_q31c5"]
+[ext_resource type="AudioStream" uid="uid://qmjcb1s7j4sj" path="res://assets/sound/laser.wav" id="3_q31c5"]
 
 [sub_resource type="Animation" id="Animation_vlw50"]
 length = 0.001

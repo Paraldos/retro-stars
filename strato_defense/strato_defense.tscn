@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqh3pydl6x7xg"]
+[gd_scene load_steps=6 format=3 uid="uid://dqh3pydl6x7xg"]
 
 [ext_resource type="PackedScene" uid="uid://d2rnxi0f7fa63" path="res://strato_defense/gun/main_gun.tscn" id="1_5khlk"]
 [ext_resource type="Script" uid="uid://bwanfcewuyagy" path="res://strato_defense/strato_defense.gd" id="1_mwui4"]
+[ext_resource type="PackedScene" uid="uid://cyf8be1faludl" path="res://strato_defense/ui/ui.tscn" id="2_hhvar"]
 [ext_resource type="PackedScene" uid="uid://8gcq6h5iy6pp" path="res://strato_defense/level/level.tscn" id="2_yah1x"]
 [ext_resource type="PackedScene" uid="uid://df7tv1bfy8slc" path="res://strato_defense/building_template/building.tscn" id="4_7cwcl"]
 
@@ -165,6 +166,8 @@ points = PackedVector2Array()
 unique_name_in_owner = true
 wait_time = 4.0
 autostart = true
+
+[node name="UI" parent="." instance=ExtResource("2_hhvar")]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 

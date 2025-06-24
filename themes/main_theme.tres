@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bfso10g3u0yvr"]
+
+[ext_resource type="FontFile" uid="uid://18wicv1w76y4" path="res://assets/fonts/Pixel Lofi.otf" id="1_rjgu6"]
+
+[resource]
+default_font = ExtResource("1_rjgu6")
