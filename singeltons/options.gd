@@ -13,7 +13,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("open_menu"):
 		if credits_is_open:
-			_close_redits()
+			_close_credits()
 		elif main_is_open:
 			_close_main()
 		else:
@@ -45,21 +45,21 @@ func _open_credits():
 	if credits_is_open: return
 	if _is_animation_playing(): return
 	credits_is_open = true
-	animation_main.play_backwards('open')
+	animation_main.play("pause")
 	animation_credits.play("open")
 
-func _close_redits():
+func _close_credits():
 	if !credits_is_open: return
 	if _is_animation_playing(): return
 	credits_is_open = false
-	animation_main.play('open')
+	animation_main.play_backwards("pause")
 	animation_credits.play_backwards("open")
 
 func _on_return_btn_pressed() -> void:
 	_close_main()
 
 func _on_button_credits_pressed() -> void:
-	if credits_is_open:
-		_close_redits()
-	else:
-		_open_credits()
+	_open_credits()
+
+func _on_close_credits_btn_pressed() -> void:
+	_close_credits()
