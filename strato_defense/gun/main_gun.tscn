@@ -28,19 +28,13 @@ color = Color(0.0392157, 0.0392157, 0.0784314, 1)
 
 [node name="TowerMain" type="Line2D" parent="Tower"]
 unique_name_in_owner = true
-points = PackedVector2Array(-4, 20, -8, 0, 0, -8, 8, 0, 4, 20)
+points = PackedVector2Array(4, 16, -4, 16, -8, 8, -8, 0, -4, 0, 0, -8, 0, -16, 0, -8, 4, 0, 8, 0, 8, 8)
 closed = true
 width = 3.0
 default_color = Color(0, 1, 1, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
-
-[node name="TowerBarrrel" type="Line2D" parent="Tower"]
-position = Vector2(-48, 24)
-points = PackedVector2Array(48, -48, 48, -32)
-width = 3.0
-default_color = Color(0, 1, 1, 1)
 
 [node name="BulletSpawnPoint" type="Node2D" parent="Tower"]
 unique_name_in_owner = true
