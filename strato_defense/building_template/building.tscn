@@ -13,6 +13,10 @@ unique_name_in_owner = true
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 metadata/_edit_lock_ = true
 
+[node name="BackgroundPolygon" type="Polygon2D" parent="."]
+unique_name_in_owner = true
+color = Color(0.0392157, 0.0392157, 0.0784314, 1)
+
 [node name="TorsoLine" type="Line2D" parent="."]
 unique_name_in_owner = true
 points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
