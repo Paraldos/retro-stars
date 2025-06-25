@@ -20,19 +20,18 @@ end_cap_mode = 2
 
 [node name="Tower" type="Node2D" parent="."]
 unique_name_in_owner = true
-modulate = Color(0, 1, 1, 1)
 position = Vector2(0, -16)
 
 [node name="BackgroundPolygon" type="Polygon2D" parent="Tower"]
-position = Vector2(0, 16)
+unique_name_in_owner = true
 color = Color(0.0392157, 0.0392157, 0.0784314, 1)
-polygon = PackedVector2Array(-8, -16, 0, -24, 8, -16, 4, 0, -4, 0)
 
 [node name="TowerMain" type="Line2D" parent="Tower"]
-position = Vector2(16, 8)
-points = PackedVector2Array(-20, 8, -24, -8, -16, -16, -8, -8, -12, 8)
+unique_name_in_owner = true
+points = PackedVector2Array(-4, 20, -8, 0, 0, -8, 8, 0, 4, 20)
 closed = true
 width = 3.0
+default_color = Color(0, 1, 1, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
@@ -41,15 +40,11 @@ end_cap_mode = 2
 position = Vector2(-48, 24)
 points = PackedVector2Array(48, -48, 48, -32)
 width = 3.0
+default_color = Color(0, 1, 1, 1)
 
 [node name="BulletSpawnPoint" type="Node2D" parent="Tower"]
 unique_name_in_owner = true
-position = Vector2(0, -48)
-
-[node name="Line2D" type="Line2D" parent="Tower"]
-visible = false
-points = PackedVector2Array(0, -16, 0, -1328)
-width = 1.0
+position = Vector2(0, -44)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-40, 0, 0, 16, 40, 0, 32, 16, -32, 16)

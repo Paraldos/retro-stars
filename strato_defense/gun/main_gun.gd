@@ -4,6 +4,8 @@ extends Node2D
 @onready var bullet_spawn_point: Node2D = %BulletSpawnPoint
 @onready var sound_effect_gund: SoundEffect = %SoundEffectGund
 @onready var hit_area_collision_shape: CollisionShape2D = %HitAreaCollisionShape
+@onready var tower_main: Line2D = %TowerMain
+@onready var background_polygon: Polygon2D = %BackgroundPolygon
 
 @export_enum("LEFT_TOWER", "MIDDLE_TOWER", "RIGHT_TOWER") var gun_position : String
 @export var dip = 70
@@ -17,6 +19,7 @@ func _ready() -> void:
 	_setup_gun_rotation()
 	_setup_recoil_direction()
 	hit_area_collision_shape.disabled = tower.rotation_degrees != 0
+	background_polygon.polygon = tower_main.points
 
 func _setup_gun_rotation():
 	if gun_position == "LEFT_TOWER":

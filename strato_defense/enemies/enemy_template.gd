@@ -5,6 +5,7 @@ extends Node2D
 @onready var attack_particles: CPUParticles2D = %AttackParticles
 @onready var attack_shape: CollisionShape2D = %AttackShape
 @onready var attack_sound_effect: SoundEffect = %AttackSoundEffect
+@onready var polygon_background: Polygon2D = %PolygonBackground
 @onready var body: Line2D = %Body
 @onready var hitbox_polygon: CollisionPolygon2D = %HitboxPolygon
 
@@ -25,6 +26,7 @@ func _ready() -> void:
 	_initial_position()
 	_move()
 	_toggle_attack(false)
+	polygon_background.polygon = body.points
 
 func _toggle_attack(new_status):
 	attack.visible = new_status

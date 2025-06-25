@@ -8,7 +8,10 @@ extends CanvasLayer
 @onready var spawn_timer: Timer = %SpawnTimer
 
 var templates_for_enemies = [
-	preload("res://strato_defense/enemies/enemy_template.tscn")
+	preload("res://strato_defense/enemies/enemy_1.tscn"),
+	preload("res://strato_defense/enemies/enemy_2.tscn"),
+	preload("res://strato_defense/enemies/enemy_3.tscn"),
+	preload("res://strato_defense/enemies/enemy_4.tscn"),
 ]
 var enemies_spawned = 0
 

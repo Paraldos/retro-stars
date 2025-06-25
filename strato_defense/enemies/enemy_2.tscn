@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgmovfhtdrk6o"]
+
+[ext_resource type="PackedScene" uid="uid://b0k7vfij7vnbx" path="res://strato_defense/enemies/enemy_template.tscn" id="1_h5lak"]
+
+[node name="Enemy2" instance=ExtResource("1_h5lak")]
+
+[node name="Attack" parent="." index="0"]
+modulate = Color(1, 0.027451, 0.227451, 1)
+
+[node name="Body" parent="." index="2"]
+points = PackedVector2Array(-8, 8, 24, 0, -8, -8, -4, -4, -16, 0, -4, 4)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://0aximuodq84e"]
+
+[ext_resource type="PackedScene" uid="uid://b0k7vfij7vnbx" path="res://strato_defense/enemies/enemy_template.tscn" id="1_bvdan"]
+
+[node name="EnemyTemplate" instance=ExtResource("1_bvdan")]
+
+[node name="Body" parent="." index="2"]
+points = PackedVector2Array(4, 4, 28, 0, 4, -4, -8, -12, -12, 0, -8, 12)
