@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b480rdv3hoyip"]
+
+[ext_resource type="AudioStream" uid="uid://b3arrtg3voi2h" path="res://assets/music/BoxCat Games - eCommerce.mp3" id="1_v0863"]
+
+[node name="Music" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_v0863")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true

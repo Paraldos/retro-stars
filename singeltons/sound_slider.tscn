@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqonki5iro1an"]
+
+[ext_resource type="Theme" uid="uid://bfso10g3u0yvr" path="res://themes/main_theme.tres" id="1_0iiyc"]
+[ext_resource type="Script" uid="uid://byqcjvrcpjxjh" path="res://singeltons/sound_slider.gd" id="1_len37"]
+
+[node name="SoundSlider" type="VBoxContainer"]
+texture_filter = 1
+offset_right = 160.0
+offset_bottom = 43.0
+theme = ExtResource("1_0iiyc")
+script = ExtResource("1_len37")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Name"
+
+[node name="HSlider" type="HSlider" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]
