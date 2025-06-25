@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 Utils="*res://singeltons/utils.tscn"
 SignalBus="*res://singeltons/signal_bus.gd"
 StratoDefenseUtils="*res://strato_defense/strato_defense_utils.tscn"
-Options="*res://singeltons/options.tscn"
+Options="*res://singeltons/options/options.tscn"
 Music="*res://singeltons/music.tscn"
 
 [display]

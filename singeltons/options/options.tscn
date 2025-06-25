@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpv6y1uobojoi"]
+
+[ext_resource type="Script" uid="uid://pk25e52xflca" path="res://singeltons/options/options.gd" id="1_fp51t"]
+[ext_resource type="PackedScene" uid="uid://bcvctldu6375w" path="res://singeltons/options/options_main.tscn" id="2_28qrh"]
+[ext_resource type="PackedScene" uid="uid://c7hrqk36uior6" path="res://singeltons/options/options_background.tscn" id="2_sd74l"]
+[ext_resource type="PackedScene" uid="uid://bc7sqvbf1u8po" path="res://singeltons/options/options_credits.tscn" id="3_sd74l"]
+
+[node name="Options" type="CanvasLayer"]
+process_mode = 3
+layer = 128
+script = ExtResource("1_fp51t")
+
+[node name="Background" parent="." instance=ExtResource("2_sd74l")]
+unique_name_in_owner = true
+
+[node name="Credits" parent="." instance=ExtResource("3_sd74l")]
+unique_name_in_owner = true
+
+[node name="Main" parent="." instance=ExtResource("2_28qrh")]
+unique_name_in_owner = true
+
+[connection signal="close_credits" from="Credits" to="." method="_on_credits_close_credits"]
+[connection signal="open_credits" from="Main" to="." method="_on_main_open_credits"]
+[connection signal="return_to_game" from="Main" to="." method="_on_main_return_to_game"]

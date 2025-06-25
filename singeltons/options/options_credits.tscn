@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=3 uid="uid://bc7sqvbf1u8po"]
+
+[ext_resource type="Theme" uid="uid://bfso10g3u0yvr" path="res://themes/main_theme.tres" id="1_wn55a"]
+[ext_resource type="Script" uid="uid://cx5fvw6h5rptq" path="res://singeltons/options/options_credits.gd" id="2_v3egb"]
+
+[sub_resource type="Animation" id="Animation_vhu23"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bakd6"]
+resource_name = "open"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -540), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vhu23"]
+_data = {
+&"RESET": SubResource("Animation_vhu23"),
+&"open": SubResource("Animation_bakd6")
+}
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 960.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wn55a")
+script = ExtResource("2_v3egb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_vhu23")
+}
+
+[node name="CreditsContent" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -44.0
+offset_right = 150.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsContent"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Credits Label" type="Label" parent="CreditsContent/VBoxContainer"]
+layout_mode = 2
+text = "- Credits -"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label" type="Label" parent="CreditsContent/VBoxContainer"]
+layout_mode = 2
+text = "Song: eCommerce
+Artist: BoxCat Games
+Source: Free Music Archive
+License type: (CC BY)"
+horizontal_alignment = 1
+
+[node name="CloseCreditsBtn" type="Button" parent="CreditsContent/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Close Credits"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_credits_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_credits_animation_started"]
+[connection signal="pressed" from="CreditsContent/VBoxContainer/CloseCreditsBtn" to="." method="_on_close_credits_btn_pressed"]
