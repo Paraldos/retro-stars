@@ -90,7 +90,16 @@ text = "- Game Over -"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Button" type="Button" parent="Control/PanelContainer/VBoxContainer"]
+[node name="LabelPoints" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Points: "
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="Control/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Restart"
+
+[connection signal="pressed" from="Control/PanelContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

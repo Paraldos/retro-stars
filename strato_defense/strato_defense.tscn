@@ -170,7 +170,7 @@ metadata/_edit_lock_ = true
 
 [node name="SpawnTimer" type="Timer" parent="Enemies"]
 unique_name_in_owner = true
-wait_time = 2.0
+wait_time = 4.0
 autostart = true
 
 [node name="UI" parent="." instance=ExtResource("2_hhvar")]

@@ -5,6 +5,7 @@ extends CanvasLayer
 
 
 func _physics_process(delta: float) -> void:
+	if SceneChanger.is_playing: return
 	if Input.is_action_just_pressed("open_menu"):
 		if credits.credits_is_open:
 			_close_credits()
