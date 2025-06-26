@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d2rnxi0f7fa63"]
 
-[ext_resource type="Script" uid="uid://biv8b7mbyif8s" path="res://strato_defense/gun/main_gun.gd" id="1_bn36c"]
+[ext_resource type="Script" uid="uid://biv8b7mbyif8s" path="res://strato_defense/guns/gun/main_gun.gd" id="1_bn36c"]
 [ext_resource type="Script" uid="uid://ta42ornj8lfx" path="res://classes/sound_effect.gd" id="2_rda66"]
 [ext_resource type="AudioStream" uid="uid://b7y6j37us27uc" path="res://assets/sound/gun.wav" id="3_k0e10"]
 

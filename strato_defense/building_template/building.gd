@@ -9,10 +9,11 @@ func _ready() -> void:
 	background_polygon.polygon = collision_polygon.polygon
 	torso_line.points = collision_polygon.polygon
 	await get_tree().create_timer(0.1).timeout
-	StratoDefenseUtils.buildings += 1
+	Utils.strato_defense.buildings += 1
 
 func _destroy():
-	StratoDefenseUtils.buildings -= 1
-	StratoDefenseUtils._spawn_explosion(global_position)
+	Utils.strato_defense.buildings -= 1
+	Utils.strato_defense._spawn_explosion(global_position)
+	SignalBus.building_destroyed.emit()
 	visible = false
 	collision_polygon.call_deferred('set_disabled', true)

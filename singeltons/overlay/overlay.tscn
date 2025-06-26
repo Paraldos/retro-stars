@@ -4,7 +4,7 @@
 
 [node name="Background" type="CanvasLayer"]
 process_mode = 3
-layer = 50
+layer = 90
 script = ExtResource("1_rpk1g")
 
 [node name="Rect" type="ColorRect" parent="."]

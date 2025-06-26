@@ -87,19 +87,19 @@ func _adjust_attack_hight():
 		attack_particles.position = attack_line.points[1] + Vector2(0, 10)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	StratoDefenseUtils._spawn_explosion(global_position)
+	Utils.strato_defense._spawn_explosion(global_position)
 	area.get_parent().queue_free()
-	StratoDefenseUtils._add_points(point_value)
+	Utils.strato_defense._add_points(point_value)
 	queue_free()
 
 func _on_attacke_area_area_entered(area: Area2D) -> void:
 	if !attack.visible: return
 	buildings_passed += 1
-	if StratoDefenseUtils.main_gun_intact:
+	if Utils.strato_defense.main_gun_intact:
 		if !area.name.contains('HitAreaGun'): return
 		call_deferred("_toggle_attack", false)
 		area.get_parent()._destroy()
-	elif buildings_passed == StratoDefenseUtils.buildings:
+	elif buildings_passed == Utils.strato_defense.buildings:
 		if !area.name.containsn('Building'): return
 		call_deferred("_toggle_attack", false)
 		area._destroy()

@@ -1,3 +1,96 @@
-[gd_scene format=3 uid="uid://dt6rtbfqgpoom"]
+[gd_scene load_steps=6 format=3 uid="uid://dt6rtbfqgpoom"]
+
+[ext_resource type="Script" uid="uid://cnr0b77ulqxhv" path="res://strato_defense/game_over_screen/game_over_screen.gd" id="1_pcbvm"]
+[ext_resource type="Theme" uid="uid://bfso10g3u0yvr" path="res://themes/main_theme.tres" id="2_hkkvm"]
+
+[sub_resource type="Animation" id="Animation_r7310"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hkkvm"]
+resource_name = "open"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ilbta"]
+_data = {
+&"RESET": SubResource("Animation_r7310"),
+&"open": SubResource("Animation_hkkvm")
+}
 
 [node name="GameOverScreen" type="CanvasLayer"]
+process_mode = 3
+layer = 100
+script = ExtResource("1_pcbvm")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 960.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_hkkvm")
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_ilbta")
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -52.0
+offset_right = 160.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "- Game Over -"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Button" type="Button" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Restart"

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cjcsllaf4em5v"]
 
-[ext_resource type="Script" uid="uid://h8kg63010807" path="res://strato_defense/plaer_bullet/player_bullet.gd" id="1_3nglb"]
+[ext_resource type="Script" uid="uid://h8kg63010807" path="res://strato_defense/guns/player_bullet/player_bullet.gd" id="1_3nglb"]
 
 [sub_resource type="Gradient" id="Gradient_3nglb"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)

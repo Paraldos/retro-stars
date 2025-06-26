@@ -1,41 +1,31 @@
 extends CanvasLayer
 
-@onready var main_gun_left: Node2D = %MainGunLeft
-@onready var main_gun_middle: Node2D = %MainGunMiddle
-@onready var main_gun_right: Node2D = %MainGunRight
-@onready var attack_timer: Timer = %AttackTimer
-@onready var enemies_container: Node2D = %EnemiesContainer
-@onready var spawn_timer: Timer = %SpawnTimer
+@onready var game_over_screen: CanvasLayer = %GameOverScreen
 
-var templates_for_enemies = [
-	preload("res://strato_defense/enemies/enemy_1.tscn"),
-	preload("res://strato_defense/enemies/enemy_2.tscn"),
-	preload("res://strato_defense/enemies/enemy_3.tscn"),
-	preload("res://strato_defense/enemies/enemy_4.tscn"),
-]
-var enemies_spawned = 0
+var buildings = 0
+var main_gun_intact = true
+var points = 0
+var explosion_template = preload('res://strato_defense/explosion/explosion.tscn')
 
-func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("left") or Input.is_action_pressed("right") or Input.is_action_pressed("up"):
-		_attack()
+func _ready() -> void:
+	Utils.strato_defense = self
+	SignalBus.building_destroyed.connect(_on_building_destroyed)
+	_reset()
 
-func _attack():
-	if !attack_timer.is_stopped(): return
-	if Input.is_action_pressed("up"):
-		main_gun_middle._attack()
-	elif Input.is_action_pressed("left"):
-		main_gun_left._attack()
-	elif Input.is_action_pressed("right"):
-		main_gun_right._attack()
-	attack_timer.start()
+func _on_building_destroyed():
+	if buildings == 0:
+		game_over_screen._open()
 
-func _on_spawn_timer_timeout() -> void:
-	if enemies_spawned == 9:
-		enemies_spawned = 0
-		if spawn_timer.wait_time >= 2.0:
-			spawn_timer.wait_time -= 0.2
-	enemies_spawned += 1
-	var enemy_template = templates_for_enemies[randi() % templates_for_enemies.size()]
-	var enemy = enemy_template.instantiate()
-	enemy.time_to_cross_row = spawn_timer.wait_time -0.5
-	enemies_container.add_child(enemy)
+func _reset():
+	buildings = 0
+	main_gun_intact = true
+	points = 0
+
+func _add_points(value):
+	points += value
+	SignalBus.update_points.emit()
+
+func _spawn_explosion(position):
+	var explosion = explosion_template.instantiate()
+	explosion.global_position = position
+	get_tree().current_scene.add_child(explosion)

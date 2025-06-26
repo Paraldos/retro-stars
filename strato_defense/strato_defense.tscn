@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqh3pydl6x7xg"]
+[gd_scene load_steps=9 format=3 uid="uid://dqh3pydl6x7xg"]
 
-[ext_resource type="PackedScene" uid="uid://d2rnxi0f7fa63" path="res://strato_defense/gun/main_gun.tscn" id="1_5khlk"]
 [ext_resource type="Script" uid="uid://bwanfcewuyagy" path="res://strato_defense/strato_defense.gd" id="1_mwui4"]
 [ext_resource type="PackedScene" uid="uid://cyf8be1faludl" path="res://strato_defense/ui/ui.tscn" id="2_hhvar"]
 [ext_resource type="PackedScene" uid="uid://8gcq6h5iy6pp" path="res://strato_defense/level/level.tscn" id="2_yah1x"]
 [ext_resource type="PackedScene" uid="uid://df7tv1bfy8slc" path="res://strato_defense/building_template/building.tscn" id="4_7cwcl"]
+[ext_resource type="PackedScene" uid="uid://bwr14n8axjby6" path="res://strato_defense/guns/guns.tscn" id="4_f513t"]
+[ext_resource type="PackedScene" uid="uid://dt6rtbfqgpoom" path="res://strato_defense/game_over_screen/game_over_screen.tscn" id="6_7g3kl"]
+[ext_resource type="Script" uid="uid://b6h4sglga0i84" path="res://strato_defense/enemies.gd" id="6_exnni"]
 
 [sub_resource type="Gradient" id="Gradient_hhvar"]
 offsets = PackedFloat32Array(0, 0.2, 0.753333, 1)
@@ -14,10 +16,10 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 layer = 0
 script = ExtResource("1_mwui4")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="BackgroundAndStars" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="BackgroundAndStars"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -26,7 +28,7 @@ grow_vertical = 2
 color = Color(0.0392157, 0.0392157, 0.0784314, 1)
 metadata/_edit_lock_ = true
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="BackgroundAndStars"]
 position = Vector2(480, 135)
 amount = 80
 lifetime = 120.0
@@ -45,33 +47,6 @@ position = Vector2(0, 48)
 
 [node name="CollisionPolygon2D" parent="Level" index="0"]
 polygon = PackedVector2Array(0, 336, 64, 336, 64, 400, 144, 400, 144, 448, 232, 448, 232, 408, 256, 408, 256, 432, 344, 432, 344, 408, 416, 408, 416, 376, 448, 376, 448, 312, 512, 312, 512, 400, 544, 400, 544, 448, 624, 448, 624, 424, 704, 424, 704, 408, 768, 408, 768, 448, 864, 448, 864, 424, 896, 424, 896, 336, 960, 336, 960, 496, 0, 496)
-
-[node name="AttackTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 0.4
-one_shot = true
-
-[node name="Guns" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
-
-[node name="MainGunLeft" parent="Guns" instance=ExtResource("1_5khlk")]
-unique_name_in_owner = true
-position = Vector2(32, 368)
-gun_position = "LEFT_TOWER"
-
-[node name="MainGunMiddle" parent="Guns" instance=ExtResource("1_5khlk")]
-unique_name_in_owner = true
-position = Vector2(480, 344)
-gun_position = "MIDDLE_TOWER"
-
-[node name="MainGunRight" parent="Guns" instance=ExtResource("1_5khlk")]
-unique_name_in_owner = true
-position = Vector2(928, 368)
-gun_position = "RIGHT_TOWER"
-
-[node name="EnemiesContainer" type="Node2D" parent="."]
-unique_name_in_owner = true
-metadata/_edit_lock_ = true
 
 [node name="Buildings" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -184,14 +159,26 @@ polygon = PackedVector2Array(-8, 16, -4, -16, 4, -16, 8, 16)
 [node name="TorsoLine" parent="Buildings/Building12" index="2"]
 points = PackedVector2Array()
 
-[node name="SpawnTimer" type="Timer" parent="."]
+[node name="Guns" parent="." instance=ExtResource("4_f513t")]
+
+[node name="Enemies" type="Node2D" parent="."]
+script = ExtResource("6_exnni")
+
+[node name="EnemiesContainer" type="Node2D" parent="Enemies"]
 unique_name_in_owner = true
-wait_time = 4.0
+metadata/_edit_lock_ = true
+
+[node name="SpawnTimer" type="Timer" parent="Enemies"]
+unique_name_in_owner = true
+wait_time = 2.0
 autostart = true
 
 [node name="UI" parent="." instance=ExtResource("2_hhvar")]
 
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[node name="GameOverScreen" parent="." instance=ExtResource("6_7g3kl")]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="Enemies/SpawnTimer" to="Enemies" method="_on_spawn_timer_timeout"]
 
 [editable path="Level"]
 [editable path="Buildings/Building"]

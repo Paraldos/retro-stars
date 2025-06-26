@@ -9,7 +9,7 @@ extends Node2D
 
 @export_enum("LEFT_TOWER", "MIDDLE_TOWER", "RIGHT_TOWER") var gun_position : String
 @export var dip = 70
-var player_bullet = preload("res://strato_defense/plaer_bullet/player_bullet.tscn")
+var player_bullet = preload("res://strato_defense/guns/player_bullet/player_bullet.tscn")
 var recoil_direction: Vector2
 var recoil_amount = 15
 var rng = RandomNumberGenerator.new()
@@ -60,5 +60,5 @@ func _recoil():
 func _destroy():
 	hit_area_collision_shape.call_deferred('set_disabled', true)
 	tower.visible = false
-	StratoDefenseUtils.main_gun_intact = false
-	StratoDefenseUtils._spawn_explosion(tower.global_position)
+	Utils.strato_defense.main_gun_intact = false
+	Utils.strato_defense._spawn_explosion(tower.global_position)
