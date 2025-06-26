@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7hrqk36uior6"]
+
+[ext_resource type="Script" uid="uid://6klxv8sx4klq" path="res://singeltons/overlay/overlay.gd" id="1_rpk1g"]
+
+[node name="Background" type="CanvasLayer"]
+process_mode = 3
+layer = 50
+script = ExtResource("1_rpk1g")
+
+[node name="Rect" type="ColorRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+metadata/_edit_lock_ = true

@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-@onready var background: ColorRect = %Background
 @onready var credits: Control = %Credits
 @onready var main: Control = %Main
 
@@ -16,11 +15,11 @@ func _physics_process(delta: float) -> void:
 
 func _open_main():
 	main._open()
-	background._open()
+	Overlay._open()
 
 func _close_main():
 	main._close()
-	background._close()
+	Overlay._close()
 
 func _open_credits():
 	main._pause()

@@ -11,6 +11,7 @@ offsets = PackedFloat32Array(0, 0.2, 0.753333, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="StratoDefense" type="CanvasLayer"]
+layer = 0
 script = ExtResource("1_mwui4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
