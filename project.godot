@@ -28,8 +28,8 @@ SceneChanger="*res://singeltons/scene_changer.tscn"
 
 window/size/viewport_width=960
 window/size/viewport_height=540
+window/size/window_width_override=480
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [input]
 

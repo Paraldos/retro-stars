@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var enemies_container: Node2D = %EnemiesContainer
 @onready var spawn_timer: Timer = %SpawnTimer
+@export var stop_spawn = false
 var enemies_spawned = 0
 var templates_for_enemies = [
 	preload("res://strato_defense/enemies/enemy_1.tscn"),
@@ -11,6 +12,7 @@ var templates_for_enemies = [
 ]
 
 func _on_spawn_timer_timeout() -> void:
+	if stop_spawn: return
 	if enemies_spawned == 9:
 		enemies_spawned = 0
 		if spawn_timer.wait_time >= 2.0:
